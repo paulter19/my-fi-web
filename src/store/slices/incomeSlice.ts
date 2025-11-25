@@ -12,11 +12,7 @@ interface IncomeState {
 }
 
 const initialState: IncomeState = {
-  items: [
-    { id: '1', title: 'Full-time Job', amount: 5000, frequency: 'monthly' },
-    { id: '2', title: 'Freelance Project', amount: 1200, frequency: 'one-time' },
-    { id: '3', title: 'Dividends', amount: 300, frequency: 'monthly' },
-  ],
+  items: [],
 };
 
 const incomeSlice = createSlice({
