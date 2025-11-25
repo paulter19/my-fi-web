@@ -188,7 +188,7 @@ export const Dashboard = () => {
                                     label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                                     labelLine={{ stroke: '#94a3b8', strokeWidth: 1 }}
                                 >
-                                    {spendingByCategory.map((entry, index) => (
+                                    {spendingByCategory.map((_, index) => (
                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>

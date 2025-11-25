@@ -6,7 +6,7 @@ import { DollarSign, Edit2, Plus, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-export const Income = () => {
+export const IncomePage = () => {
     const dispatch = useDispatch();
     const incomes = useSelector((state: RootState) => state.income.items);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -98,8 +98,8 @@ export const Income = () => {
                             key={f}
                             onClick={() => setFrequencyFilter(f)}
                             className={`px-4 py-2 rounded-lg font-medium capitalize transition-all ${frequencyFilter === f
-                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                 }`}
                         >
                             {f === 'one-time' ? 'One-time' : f}
