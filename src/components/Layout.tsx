@@ -1,6 +1,6 @@
 import { toggleTheme } from '@/store/slices/uiSlice';
 import type { RootState } from '@/store/store';
-import { LayoutDashboard, Menu, Moon, Settings as SettingsIcon, Sun, Wallet, X } from 'lucide-react';
+import { ArrowLeftRight, DollarSign, LayoutDashboard, Menu, Moon, Receipt, Settings as SettingsIcon, Sun, Wallet, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useLocation } from 'react-router-dom';
@@ -21,8 +21,11 @@ export const Layout = () => {
     }, [isDark]);
 
     const navItems = [
-        { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+        { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
         { icon: Wallet, label: 'Accounts', path: '/accounts' },
+        { icon: Receipt, label: 'Bills', path: '/bills' },
+        { icon: ArrowLeftRight, label: 'Transactions', path: '/transactions' },
+        { icon: DollarSign, label: 'Income', path: '/income' },
         { icon: SettingsIcon, label: 'Settings', path: '/settings' },
     ];
 
