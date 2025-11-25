@@ -22,7 +22,7 @@ export const Landing = () => {
         <div className="min-h-screen relative overflow-hidden">
             {/* Animated Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950" />
-            
+
             {/* Animated Gradient Orbs */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -38,7 +38,7 @@ export const Landing = () => {
                         <p className="text-xs text-slate-500 dark:text-slate-400">Personal Finance</p>
                     </div>
                 </div>
-                
+
                 <button
                     onClick={() => dispatch(toggleTheme())}
                     className="p-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-800 transition-all duration-200 shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700"
@@ -59,12 +59,12 @@ export const Landing = () => {
                                         ✨ Smart Financial Management
                                     </span>
                                 </div>
-                                
+
                                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight">
                                     Take Control of Your{' '}
                                     <span className="text-gradient">Finances</span>
                                 </h1>
-                                
+
                                 <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed">
                                     Track expenses, manage budgets, and achieve your financial goals with our beautiful and intuitive platform.
                                 </p>
@@ -79,7 +79,7 @@ export const Landing = () => {
                                     Start Budgeting
                                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                 </Link>
-                                
+
                                 <a
                                     href="#"
                                     className="group flex items-center justify-center gap-3 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
@@ -90,22 +90,6 @@ export const Landing = () => {
                                         <div className="text-sm font-bold">App Store</div>
                                     </div>
                                 </a>
-                            </div>
-
-                            {/* Stats */}
-                            <div className="grid grid-cols-3 gap-6 pt-8">
-                                <div className="space-y-1">
-                                    <div className="text-3xl font-bold text-gradient">10K+</div>
-                                    <div className="text-sm text-slate-600 dark:text-slate-400">Active Users</div>
-                                </div>
-                                <div className="space-y-1">
-                                    <div className="text-3xl font-bold text-gradient">$2M+</div>
-                                    <div className="text-sm text-slate-600 dark:text-slate-400">Money Managed</div>
-                                </div>
-                                <div className="space-y-1">
-                                    <div className="text-3xl font-bold text-gradient">4.9★</div>
-                                    <div className="text-sm text-slate-600 dark:text-slate-400">App Rating</div>
-                                </div>
                             </div>
                         </div>
 
