@@ -50,7 +50,7 @@ export const EditTransactionModal: React.FC<EditTransactionModalProps> = ({ isOp
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={onClose}>
-            <div className="card-glass w-full max-w-md p-6 shadow-xl animate-fade-in m-4" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white dark:bg-slate-900 w-full max-w-md p-6 shadow-2xl rounded-2xl animate-fade-in m-4 border border-slate-200 dark:border-slate-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Edit Transaction</h2>
                     <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
@@ -93,8 +93,8 @@ export const EditTransactionModal: React.FC<EditTransactionModalProps> = ({ isOp
                                 type="button"
                                 onClick={() => setType('expense')}
                                 className={`py-2 px-4 rounded-xl font-medium transition-all ${type === 'expense'
-                                        ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg'
-                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg'
+                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                     }`}
                             >
                                 Expense
@@ -103,8 +103,8 @@ export const EditTransactionModal: React.FC<EditTransactionModalProps> = ({ isOp
                                 type="button"
                                 onClick={() => setType('income')}
                                 className={`py-2 px-4 rounded-xl font-medium transition-all ${type === 'income'
-                                        ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
-                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
+                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                     }`}
                             >
                                 Income

@@ -41,7 +41,7 @@ export const EditIncomeModal: React.FC<EditIncomeModalProps> = ({ isOpen, onClos
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={onClose}>
-            <div className="card-glass w-full max-w-md p-6 shadow-xl animate-fade-in m-4" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white dark:bg-slate-900 w-full max-w-md p-6 shadow-2xl rounded-2xl animate-fade-in m-4 border border-slate-200 dark:border-slate-700" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Edit Income Source</h2>
                     <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
@@ -84,8 +84,8 @@ export const EditIncomeModal: React.FC<EditIncomeModalProps> = ({ isOpen, onClos
                                 type="button"
                                 onClick={() => setFrequency('monthly')}
                                 className={`py-2 px-4 rounded-xl font-medium transition-all ${frequency === 'monthly'
-                                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                     }`}
                             >
                                 Monthly
@@ -94,8 +94,8 @@ export const EditIncomeModal: React.FC<EditIncomeModalProps> = ({ isOpen, onClos
                                 type="button"
                                 onClick={() => setFrequency('one-time')}
                                 className={`py-2 px-4 rounded-xl font-medium transition-all ${frequency === 'one-time'
-                                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                     }`}
                             >
                                 One-time

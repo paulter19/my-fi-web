@@ -38,11 +38,11 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({ isOpen, onClos
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-            <div className="bg-[var(--surface)] rounded-xl w-full max-w-md p-6 shadow-xl animate-in fade-in zoom-in duration-200">
+            <div className="bg-white dark:bg-slate-900 w-full max-w-md p-6 shadow-2xl rounded-2xl animate-fade-in m-4 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-bold">Add Account</h2>
-                    <button onClick={onClose} className="p-1 hover:bg-[rgba(0,0,0,0.05)] rounded-full">
-                        <X size={24} />
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Add Account</h2>
+                    <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
+                        <X size={24} className="text-slate-600 dark:text-slate-400" />
                     </button>
                 </div>
 
@@ -80,8 +80,8 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({ isOpen, onClos
                                     type="button"
                                     onClick={() => setType(t)}
                                     className={`p-2 rounded-lg border capitalize transition-colors ${type === t
-                                            ? 'border-[var(--primary)] bg-[var(--primary)] text-white'
-                                            : 'border-[var(--border)] hover:bg-[rgba(0,0,0,0.05)]'
+                                        ? 'border-[var(--primary)] bg-[var(--primary)] text-white'
+                                        : 'border-[var(--border)] hover:bg-[rgba(0,0,0,0.05)]'
                                         }`}
                                 >
                                     {t}

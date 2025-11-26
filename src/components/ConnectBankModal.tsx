@@ -86,19 +86,19 @@ export const ConnectBankModal: React.FC<ConnectBankModalProps> = ({ isOpen, onCl
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-            <div className="bg-[var(--surface)] rounded-xl w-full max-w-md p-6 shadow-xl animate-in fade-in zoom-in duration-200">
+            <div className="bg-white dark:bg-slate-900 w-full max-w-md p-6 shadow-2xl rounded-2xl animate-fade-in m-4 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2">
                         <div className="bg-[#635BFF] text-white text-xs font-bold px-2 py-1 rounded">Stripe Secured</div>
                     </div>
-                    <button onClick={onClose} className="p-1 hover:bg-[rgba(0,0,0,0.05)] rounded-full">
-                        <X size={24} />
+                    <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition-colors">
+                        <X size={24} className="text-slate-600 dark:text-slate-400" />
                     </button>
                 </div>
 
                 <div className="text-center py-8">
-                    <h2 className="text-2xl font-bold mb-4">Connect your bank</h2>
-                    <p className="text-[var(--text-secondary)] mb-8">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Connect your bank</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8">
                         Link your bank account to automatically sync balances and transactions.
                     </p>
 
