@@ -1,5 +1,7 @@
 import { Card } from '@/components/Card';
 import { ListItem } from '@/components/ListItem';
+import type { Account } from '@/store/slices/accountsSlice';
+import type { Transaction } from '@/store/slices/transactionsSlice';
 import type { RootState } from '@/store/store';
 import { ArrowLeft } from 'lucide-react';
 import { useSelector } from 'react-redux';
@@ -9,10 +11,10 @@ export const AccountDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const account = useSelector((state: RootState) =>
-        state.accounts.items.find(a => a.id === id)
+        state.accounts.items.find((a: Account) => a.id === id)
     );
     const transactions = useSelector((state: RootState) =>
-        state.transactions.items.filter(t => t.accountId === id)
+        state.transactions.items.filter((t: Transaction) => t.accountId === id)
     );
 
     if (!account) {
@@ -52,7 +54,7 @@ export const AccountDetails = () => {
             <h2 className="text-xl font-bold mb-4">Transactions</h2>
             <Card>
                 {transactions.length > 0 ? (
-                    transactions.map((transaction) => (
+                    transactions.map((transaction: Transaction) => (
                         <ListItem
                             key={transaction.id}
                             title={transaction.title}

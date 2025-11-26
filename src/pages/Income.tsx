@@ -14,7 +14,7 @@ export const IncomePage = () => {
     const [selectedIncome, setSelectedIncome] = useState<Income | null>(null);
     const [frequencyFilter, setFrequencyFilter] = useState<'all' | 'monthly' | 'one-time'>('all');
 
-    const filteredIncomes = incomes.filter(income => {
+    const filteredIncomes = incomes.filter((income: Income) => {
         return frequencyFilter === 'all' || income.frequency === frequencyFilter;
     });
 
@@ -30,14 +30,14 @@ export const IncomePage = () => {
     };
 
     const totalMonthlyIncome = incomes
-        .filter(i => i.frequency === 'monthly')
-        .reduce((sum, i) => sum + i.amount, 0);
+        .filter((i: Income) => i.frequency === 'monthly')
+        .reduce((sum: number, i: Income) => sum + i.amount, 0);
 
     const totalOneTimeIncome = incomes
-        .filter(i => i.frequency === 'one-time')
-        .reduce((sum, i) => sum + i.amount, 0);
+        .filter((i: Income) => i.frequency === 'one-time')
+        .reduce((sum: number, i: Income) => sum + i.amount, 0);
 
-    const totalIncome = incomes.reduce((sum, i) => sum + i.amount, 0);
+    const totalIncome = incomes.reduce((sum: number, i: Income) => sum + i.amount, 0);
 
     return (
         <div className="space-y-8">
@@ -128,7 +128,7 @@ export const IncomePage = () => {
                     </div>
                 ) : (
                     <div className="space-y-3">
-                        {filteredIncomes.map((income) => (
+                        {filteredIncomes.map((income: Income) => (
                             <div
                                 key={income.id}
                                 className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all"

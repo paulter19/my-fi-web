@@ -1,6 +1,7 @@
 import { AccountCard } from '@/components/AccountCard';
 import { AddAccountModal } from '@/components/AddAccountModal';
 import { ConnectBankModal } from '@/components/ConnectBankModal';
+import type { Account } from '@/store/slices/accountsSlice';
 import type { RootState } from '@/store/store';
 import { Link as LinkIcon, Plus, Wallet } from 'lucide-react';
 import { useState } from 'react';
@@ -42,7 +43,7 @@ export const Accounts = () => {
             {/* Accounts Grid */}
             {accounts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {accounts.map((account) => (
+                    {accounts.map((account: Account) => (
                         <AccountCard
                             key={account.id}
                             account={account}

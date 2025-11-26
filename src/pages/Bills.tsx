@@ -15,7 +15,7 @@ export const Bills = () => {
     const [filter, setFilter] = useState<'all' | 'paid' | 'unpaid'>('all');
     const [typeFilter, setTypeFilter] = useState<'all' | 'monthly' | 'one-time'>('all');
 
-    const filteredBills = bills.filter(bill => {
+    const filteredBills = bills.filter((bill: Bill) => {
         const statusMatch = filter === 'all' || (filter === 'paid' ? bill.isPaid : !bill.isPaid);
         const typeMatch = typeFilter === 'all' || bill.type === typeFilter;
         return statusMatch && typeMatch;
@@ -36,8 +36,8 @@ export const Bills = () => {
         dispatch(toggleBillPaid(id));
     };
 
-    const totalBills = filteredBills.reduce((sum, bill) => sum + bill.amount, 0);
-    const paidBills = filteredBills.filter(b => b.isPaid).reduce((sum, bill) => sum + bill.amount, 0);
+    const totalBills = filteredBills.reduce((sum: number, bill: Bill) => sum + bill.amount, 0);
+    const paidBills = filteredBills.filter((b: Bill) => b.isPaid).reduce((sum: number, bill: Bill) => sum + bill.amount, 0);
     const unpaidBills = totalBills - paidBills;
 
     return (
@@ -101,8 +101,8 @@ export const Bills = () => {
                                     key={f}
                                     onClick={() => setFilter(f)}
                                     className={`px-4 py-2 rounded-lg font-medium capitalize transition-all ${filter === f
-                                            ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                         }`}
                                 >
                                     {f}
@@ -119,8 +119,8 @@ export const Bills = () => {
                                     key={t}
                                     onClick={() => setTypeFilter(t)}
                                     className={`px-4 py-2 rounded-lg font-medium capitalize transition-all ${typeFilter === t
-                                            ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                         }`}
                                 >
                                     {t === 'one-time' ? 'One-time' : t}
@@ -151,7 +151,7 @@ export const Bills = () => {
                     </div>
                 ) : (
                     <div className="space-y-3">
-                        {filteredBills.map((bill) => (
+                        {filteredBills.map((bill: Bill) => (
                             <div
                                 key={bill.id}
                                 className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all"
@@ -160,8 +160,8 @@ export const Bills = () => {
                                     <button
                                         onClick={() => handleTogglePaid(bill.id)}
                                         className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${bill.isPaid
-                                                ? 'bg-green-500 border-green-500'
-                                                : 'border-slate-300 dark:border-slate-600 hover:border-green-500'
+                                            ? 'bg-green-500 border-green-500'
+                                            : 'border-slate-300 dark:border-slate-600 hover:border-green-500'
                                             }`}
                                     >
                                         {bill.isPaid && <Check size={16} className="text-white" />}

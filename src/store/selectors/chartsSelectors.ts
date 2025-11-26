@@ -1,4 +1,6 @@
 import type { Bill } from '@/store/slices/billsSlice';
+import type { Income } from '@/store/slices/incomeSlice';
+import type { Transaction } from '@/store/slices/transactionsSlice';
 import { createSelector } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 
@@ -11,19 +13,19 @@ const selectTransactionItems = (state: RootState) => state.transactions.items;
 
 export const selectTotalIncome = createSelector(
     [selectIncomeItems],
-    (items) => items.reduce((sum, item) => sum + item.amount, 0)
+    (items) => items.reduce((sum: number, item: Income) => sum + item.amount, 0)
 );
 
 export const selectTotalBills = createSelector(
     [selectBillItems],
-    (items) => items.reduce((sum, item) => sum + item.amount, 0)
+    (items) => items.reduce((sum: number, item: Bill) => sum + item.amount, 0)
 );
 
 export const selectTotalExpenses = createSelector(
     [selectTransactionItems],
     (items) => items
-        .filter(t => t.type === 'expense')
-        .reduce((sum, item) => sum + item.amount, 0)
+        .filter((t: Transaction) => t.type === 'expense')
+        .reduce((sum: number, item: Transaction) => sum + item.amount, 0)
 );
 
 export const selectRemainingBalance = createSelector(
@@ -35,7 +37,7 @@ export const selectSpendingByCategory = createSelector(
     [selectTransactionItems],
     (items) => {
         const categoryMap: Record<string, number> = {};
-        items.forEach(item => {
+        items.forEach((item: Transaction) => {
             if (item.type === 'expense') {
                 categoryMap[item.category] = (categoryMap[item.category] || 0) + item.amount;
             }
@@ -57,7 +59,7 @@ export const selectMonthlySpending = createSelector(
         // Simplified: Group by month (assuming current year for simplicity in this mock)
         // Real app would need proper date handling
         const monthlyData = new Array(12).fill(0);
-        items.forEach(item => {
+        items.forEach((item: Transaction) => {
             if (item.type === 'expense') {
                 const month = new Date(item.date).getMonth();
                 monthlyData[month] += item.amount;
@@ -73,7 +75,7 @@ export const selectMonthlySpending = createSelector(
 export const selectIncomeVsBills = createSelector(
     [selectTotalIncome, selectBillItems],
     (income, bills) => {
-        const totalBills = bills.reduce((sum, item) => sum + item.amount, 0);
+        const totalBills = bills.reduce((sum: number, item: Bill) => sum + item.amount, 0);
         const leftover = Math.max(0, income - totalBills);
 
         // Generate colors for bills
@@ -82,7 +84,7 @@ export const selectIncomeVsBills = createSelector(
             '#56CCF2', '#9B51E0', '#BB6BD9', '#FF9F43', '#54a0ff'
         ];
 
-        const billSlices = bills.map((bill, index) => ({
+        const billSlices = bills.map((bill: Bill, index: number) => ({
             name: bill.title,
             amount: bill.amount,
             color: colors[index % colors.length],
@@ -127,10 +129,10 @@ export const selectUpcomingBills = createSelector(
         };
 
         return items
-            .filter(item => {
+            .filter((item: Bill) => {
                 const nextDate = getNextDate(item);
                 return !item.isPaid && nextDate >= today && nextDate <= nextWeek;
             })
-            .sort((a, b) => getNextDate(a).getTime() - getNextDate(b).getTime());
+            .sort((a: Bill, b: Bill) => getNextDate(a).getTime() - getNextDate(b).getTime());
     }
 );

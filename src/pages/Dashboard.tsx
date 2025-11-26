@@ -1,6 +1,7 @@
 import { Card } from '@/components/Card';
 import { ListItem } from '@/components/ListItem';
 import { StatBox } from '@/components/StatBox';
+import type { Bill } from '@/store/slices/billsSlice';
 import {
     selectIncomeVsBills,
     selectMonthlySpending,
@@ -115,7 +116,7 @@ export const Dashboard = () => {
                 <Card title="Upcoming Bills">
                     <div className="h-80 overflow-y-auto space-y-2">
                         {upcomingBills.length > 0 ? (
-                            upcomingBills.map((bill) => (
+                            upcomingBills.map((bill: Bill) => (
                                 <ListItem
                                     key={bill.id}
                                     title={bill.title}

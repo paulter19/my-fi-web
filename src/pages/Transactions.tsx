@@ -34,8 +34,8 @@ export const Transactions = () => {
         }
     };
 
-    const totalIncome = transactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
-    const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
+    const totalIncome = transactions.filter((t: Transaction) => t.type === 'income').reduce((sum: number, t: Transaction) => sum + t.amount, 0);
+    const totalExpenses = transactions.filter((t: Transaction) => t.type === 'expense').reduce((sum: number, t: Transaction) => sum + t.amount, 0);
     const netAmount = totalIncome - totalExpenses;
 
     return (
@@ -96,8 +96,8 @@ export const Transactions = () => {
                             key={f}
                             onClick={() => setTypeFilter(f)}
                             className={`px-4 py-2 rounded-lg font-medium capitalize transition-all ${typeFilter === f
-                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                                    : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
+                                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
                                 }`}
                         >
                             {f}
@@ -133,8 +133,8 @@ export const Transactions = () => {
                             >
                                 <div className="flex items-center gap-4 flex-1">
                                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${transaction.type === 'income'
-                                            ? 'bg-green-100 dark:bg-green-900/30'
-                                            : 'bg-red-100 dark:bg-red-900/30'
+                                        ? 'bg-green-100 dark:bg-green-900/30'
+                                        : 'bg-red-100 dark:bg-red-900/30'
                                         }`}>
                                         {transaction.type === 'income' ? (
                                             <ArrowDownLeft size={24} className="text-green-600" />
