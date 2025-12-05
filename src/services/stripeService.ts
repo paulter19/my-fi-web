@@ -1,23 +1,22 @@
-const API_URL = 'http://localhost:3000';
+import { functions } from '@/firebase';
+import { httpsCallable } from 'firebase/functions';
 
 export const stripeService = {
     createSession: async () => {
-        const response = await fetch(`${API_URL}/financial-connections-sheet`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        return await response.json();
+        const createFinancialConnectionsSession = httpsCallable(functions, 'createFinancialConnectionsSession');
+        const result = await createFinancialConnectionsSession();
+        return result.data as { clientSecret: string };
     },
 
     fetchAccounts: async (sessionId: string) => {
-        const response = await fetch(`${API_URL}/accounts?session_id=${sessionId}`);
-        return await response.json();
+        const getAccounts = httpsCallable(functions, 'getAccounts');
+        const result = await getAccounts({ sessionId });
+        return result.data as any[];
     },
 
     fetchTransactions: async (accountId: string) => {
-        const response = await fetch(`${API_URL}/transactions?account_id=${accountId}`);
-        return await response.json();
+        const getTransactions = httpsCallable(functions, 'getTransactions');
+        const result = await getTransactions({ accountId });
+        return result.data as any[];
     }
 };

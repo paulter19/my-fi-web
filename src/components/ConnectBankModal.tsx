@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // Replace with your actual publishable key
-const stripePromise = loadStripe('pk_test_51SXUzZPJNIokrXB6bIVrLwutXqrlQTFLGQndCHpULqCnhz03QFCcYC7fpyiq14Bib1EOrzOr9RvbYrQ5KFjhDxNP00e4DSisf4');
+const stripePromise = loadStripe('pk_live_51SXUzTAUrKH9sUUAz5mWuSlcEzGrnEweBBpBT6ueGU6rOKPyHrBJtUMag7s4scbIP9JoCrfnTCHSgjTGNIsrqqtS00Fk1LaGTt');
 
 interface ConnectBankModalProps {
     isOpen: boolean;
@@ -18,32 +18,43 @@ interface ConnectBankModalProps {
 export const ConnectBankModal: React.FC<ConnectBankModalProps> = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     if (!isOpen) return null;
 
     const handleConnect = async () => {
         setLoading(true);
+        setError(null);
         try {
+            console.log('Initializing Stripe...');
             const stripe = await stripePromise;
-            if (!stripe) return;
+            if (!stripe) {
+                throw new Error('Stripe failed to initialize');
+            }
 
+            console.log('Creating Financial Connections Session...');
             // 1. Get Client Secret from Backend
             const { clientSecret } = await stripeService.createSession();
+            console.log('Session created, client secret obtained');
 
             // 2. Open Stripe Financial Connections Modal
-            const { error, financialConnectionsSession } = await stripe.collectFinancialConnectionsAccounts({
+            console.log('Opening Stripe modal...');
+            const { error: stripeError, financialConnectionsSession } = await stripe.collectFinancialConnectionsAccounts({
                 clientSecret,
             });
 
-            if (error) {
-                console.error('Stripe Error:', error);
+            if (stripeError) {
+                console.error('Stripe Error:', stripeError);
+                setError(stripeError.message || 'An unknown error occurred with Stripe.');
                 setLoading(false);
                 return;
             }
 
             if (financialConnectionsSession) {
+                console.log('Session completed, fetching accounts...');
                 // 3. Fetch Account Details from Backend
                 const accounts = await stripeService.fetchAccounts(financialConnectionsSession.id);
+                console.log('Accounts fetched:', accounts);
 
                 for (const acc of accounts) {
                     const accountId = nanoid();
@@ -61,7 +72,10 @@ export const ConnectBankModal: React.FC<ConnectBankModalProps> = ({ isOpen, onCl
                     }));
 
                     // 4. Fetch Transactions
+                    console.log(`Fetching transactions for account ${acc.id}...`);
                     const transactions = await stripeService.fetchTransactions(acc.id);
+                    console.log(`Transactions fetched for ${acc.id}:`, transactions);
+
                     transactions.forEach((t: any) => {
                         dispatch(addTransaction({
                             id: t.id,
@@ -77,8 +91,9 @@ export const ConnectBankModal: React.FC<ConnectBankModalProps> = ({ isOpen, onCl
 
                 onClose();
             }
-        } catch (e) {
+        } catch (e: any) {
             console.error('Connection failed', e);
+            setError(e.message || 'Failed to connect to Stripe. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -101,6 +116,12 @@ export const ConnectBankModal: React.FC<ConnectBankModalProps> = ({ isOpen, onCl
                     <p className="text-slate-600 dark:text-slate-400 mb-8">
                         Link your bank account to automatically sync balances and transactions.
                     </p>
+
+                    {error && (
+                        <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm">
+                            {error}
+                        </div>
+                    )}
 
                     <button
                         onClick={handleConnect}

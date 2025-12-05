@@ -73,7 +73,7 @@ export const Landing = () => {
                             {/* CTA Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link
-                                    to="/dashboard"
+                                    to="/signup"
                                     className="group btn-primary flex items-center justify-center gap-2 text-lg"
                                 >
                                     Start Budgeting
@@ -183,10 +183,32 @@ export const Landing = () => {
 
             {/* Footer */}
             <footer className="relative z-10 px-6 py-12 border-t border-slate-200 dark:border-slate-800">
-                <div className="max-w-7xl mx-auto text-center">
-                    <p className="text-slate-600 dark:text-slate-400">
-                        © 2025 My-Fi. Built with ❤️ for better financial management.
-                    </p>
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <p className="text-slate-600 dark:text-slate-400">
+                            © 2025 My-Fi. Built with ❤️ for better financial management.
+                        </p>
+                        <div className="flex gap-6">
+                            <Link
+                                to="/privacy"
+                                className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                to="/terms"
+                                className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                            >
+                                Terms of Service
+                            </Link>
+                            <Link
+                                to="/faq"
+                                className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                            >
+                                FAQ
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </div>
