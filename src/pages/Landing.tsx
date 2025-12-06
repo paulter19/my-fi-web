@@ -89,7 +89,9 @@ export const Landing = () => {
                                 </Link>
 
                                 <a
-                                    href="#"
+                                    href="https://apps.apple.com/th/app/my-finance-budget-app/id1483711698"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group flex items-center justify-center gap-3 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
                                 >
                                     <Download size={20} />
