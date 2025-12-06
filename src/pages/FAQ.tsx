@@ -4,6 +4,8 @@ import { ArrowLeft, ChevronDown, Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
+import { faqPageSchema } from '@/utils/structuredData';
 
 interface FAQItem {
     question: string;
@@ -81,6 +83,12 @@ export const FAQ = () => {
 
     return (
         <div className="min-h-screen relative overflow-hidden">
+            <SEO
+                title="Frequently Asked Questions"
+                description="Find answers to common questions about My-Fi personal finance app. Learn about features, security, pricing, bank connections, budgeting, and more."
+                canonical="/faq"
+                structuredData={faqPageSchema(faqData)}
+            />
             {/* Animated Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950" />
 

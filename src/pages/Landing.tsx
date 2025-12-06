@@ -4,6 +4,8 @@ import { ArrowRight, Download, Moon, Sun } from 'lucide-react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
+import { organizationSchema, webApplicationSchema } from '@/utils/structuredData';
 
 export const Landing = () => {
     const theme = useSelector((state: RootState) => state.ui.theme);
@@ -20,6 +22,12 @@ export const Landing = () => {
 
     return (
         <div className="min-h-screen relative overflow-hidden">
+            <SEO
+                title="Home"
+                description="Take control of your finances with My-Fi. Track expenses, manage budgets, sync bank accounts, and achieve your financial goals with our beautiful and intuitive personal finance platform. Free to start."
+                canonical="/"
+                structuredData={[organizationSchema(), webApplicationSchema()]}
+            />
             {/* Animated Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950" />
 
@@ -176,6 +184,124 @@ export const Landing = () => {
                             <p className="text-slate-600 dark:text-slate-300">
                                 Your financial data is encrypted and stored securely. We never share your information with third parties.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* How It Works Section - AEO Optimized */}
+            <section className="relative z-10 px-6 py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                            How My-Fi Works
+                        </h2>
+                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                            Get started with My-Fi in three simple steps and take control of your finances today
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Step 1 */}
+                        <div className="card-glass p-8 text-center">
+                            <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span className="text-white font-bold text-2xl">1</span>
+                            </div>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                                Create Your Account
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Sign up for free in seconds with your email or Google account. No credit card required to get started.
+                            </p>
+                        </div>
+
+                        {/* Step 2 */}
+                        <div className="card-glass p-8 text-center">
+                            <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span className="text-white font-bold text-2xl">2</span>
+                            </div>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                                Connect Your Accounts
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Securely link your bank accounts through Stripe or manually add transactions. All data is encrypted and private.
+                            </p>
+                        </div>
+
+                        {/* Step 3 */}
+                        <div className="card-glass p-8 text-center">
+                            <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <span className="text-white font-bold text-2xl">3</span>
+                            </div>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                                Track & Optimize
+                            </h3>
+                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                View insights, set budgets, and track your progress. Make smarter financial decisions with real-time analytics.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Benefits List for AEO */}
+                    <div className="mt-16 card-glass p-8 md:p-12">
+                        <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">
+                            Why Choose My-Fi for Personal Finance Management?
+                        </h3>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Free to Start</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">No credit card required. Access essential budgeting features at no cost.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Bank-Level Security</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">256-bit encryption protects your financial data both in transit and at rest.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Automatic Sync</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">Connect bank accounts and credit cards for automatic transaction imports.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Beautiful Analytics</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">Visualize spending patterns with interactive charts and detailed reports.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Multi-Device Access</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">Access your finances from any device - desktop, tablet, or mobile.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-slate-900 dark:text-white mb-2">Smart Budgeting</h4>
+                                    <p className="text-slate-600 dark:text-slate-300">Set custom budgets and get alerts when you're approaching limits.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

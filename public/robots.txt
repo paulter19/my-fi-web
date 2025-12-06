@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /accounts
+Disallow: /account/
+Disallow: /bills
+Disallow: /transactions
+Disallow: /income
+Disallow: /settings
+
+Sitemap: https://my-fi.app/sitemap.xml

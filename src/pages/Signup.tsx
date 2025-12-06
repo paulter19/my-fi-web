@@ -2,6 +2,7 @@ import { useAuth } from '@/context/AuthContext';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
 
 export const Signup = () => {
     const { signup, signInWithGoogle } = useAuth();
@@ -46,6 +47,11 @@ export const Signup = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
+            <SEO
+                title="Sign Up"
+                description="Create your free My-Fi account today. Start tracking expenses, managing budgets, and taking control of your financial future in minutes."
+                canonical="/signup"
+            />
             <div className="max-w-md w-full space-y-8">
                 <div>
                     <Link to="/" className="inline-flex items-center text-sm text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-8">

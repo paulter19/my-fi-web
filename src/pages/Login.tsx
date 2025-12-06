@@ -2,6 +2,7 @@ import { useAuth } from '@/context/AuthContext';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
 
 export const Login = () => {
     const { login, signInWithGoogle } = useAuth();
@@ -36,6 +37,12 @@ export const Login = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-4">
+            <SEO
+                title="Login"
+                description="Sign in to your My-Fi account to access your personal finance dashboard, track expenses, and manage your budget."
+                canonical="/login"
+                noindex={true}
+            />
             <div className="max-w-md w-full space-y-8">
                 <div>
                     <Link to="/" className="inline-flex items-center text-sm text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-8">

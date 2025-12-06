@@ -4,6 +4,7 @@ import { ArrowLeft, Moon, Sun } from 'lucide-react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
 
 export const PrivacyPolicy = () => {
     const theme = useSelector((state: RootState) => state.ui.theme);
@@ -20,6 +21,11 @@ export const PrivacyPolicy = () => {
 
     return (
         <div className="min-h-screen relative overflow-hidden">
+            <SEO
+                title="Privacy Policy"
+                description="Learn how My-Fi protects your financial data. Read our privacy policy to understand how we collect, use, and secure your personal information."
+                canonical="/privacy"
+            />
             {/* Animated Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950" />
 
