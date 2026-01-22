@@ -1,6 +1,7 @@
 import { auth } from '@/firebase';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, type User } from 'firebase/auth';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { clearState } from '@/store/localStorage';
 
 interface AuthContextType {
     user: User | null;
@@ -57,6 +58,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const logout = async () => {
         try {
             await signOut(auth);
+            // Clear localStorage on logout to prevent data leakage
+            clearState();
         } catch (error) {
             console.error("Error signing out", error);
             throw error;

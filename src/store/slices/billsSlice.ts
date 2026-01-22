@@ -52,8 +52,11 @@ const billsSlice = createSlice({
                 }
             });
         },
+        setBills: (state, action: PayloadAction<Bill[]>) => {
+            state.items = action.payload;
+        },
     },
 });
 
-export const { addBill, updateBill, deleteBill, toggleBillPaid, setBillsStatus, resetBills } = billsSlice.actions;
+export const { addBill, updateBill, deleteBill, toggleBillPaid, setBillsStatus, resetBills, setBills } = billsSlice.actions;
 export default billsSlice.reducer;

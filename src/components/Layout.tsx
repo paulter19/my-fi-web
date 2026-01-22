@@ -4,6 +4,7 @@ import { ArrowLeftRight, DollarSign, LayoutDashboard, Menu, Moon, Receipt, Setti
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { useFirestoreSync } from '@/hooks/useFirestoreSync';
 
 export const Layout = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,6 +12,9 @@ export const Layout = () => {
     const theme = useSelector((state: RootState) => state.ui.theme);
     const dispatch = useDispatch();
     const isDark = theme === 'dark';
+    
+    // Sync data with Firestore
+    useFirestoreSync();
 
     useEffect(() => {
         if (isDark) {

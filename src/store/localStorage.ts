@@ -23,3 +23,11 @@ export const saveState = (state: any) => {
         console.error('Error saving state to localStorage:', err);
     }
 };
+
+export const clearState = () => {
+    try {
+        localStorage.removeItem(STORAGE_KEY);
+    } catch (err) {
+        console.error('Error clearing state from localStorage:', err);
+    }
+};

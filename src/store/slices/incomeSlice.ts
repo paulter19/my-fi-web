@@ -35,8 +35,11 @@ const incomeSlice = createSlice({
     deleteIncome: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
+    setIncome: (state, action: PayloadAction<Income[]>) => {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { addIncome, updateIncome, deleteIncome, resetIncome } = incomeSlice.actions;
+export const { addIncome, updateIncome, deleteIncome, resetIncome, setIncome } = incomeSlice.actions;
 export default incomeSlice.reducer;

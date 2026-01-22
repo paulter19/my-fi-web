@@ -1,15 +1,18 @@
 import { Card } from '@/components/Card';
+import { useAuth } from '@/context/AuthContext';
 import { resetAccounts } from '@/store/slices/accountsSlice';
 import { resetBills } from '@/store/slices/billsSlice';
 import { resetIncome } from '@/store/slices/incomeSlice';
 import { resetTransactions } from '@/store/slices/transactionsSlice';
 import { setTheme } from '@/store/slices/uiSlice';
 import type { RootState } from '@/store/store';
-import { AlertTriangle, Moon, Sun, Trash2 } from 'lucide-react';
+import { AlertTriangle, LogOut, Mail, Moon, Sun, Trash2 } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
+import packageJson from '../../package.json';
 
 export const Settings = () => {
     const dispatch = useDispatch();
+    const { user, logout } = useAuth();
     const theme = useSelector((state: RootState) => state.ui.theme);
     const isDark = theme === 'dark';
 
@@ -26,12 +29,47 @@ export const Settings = () => {
         }
     };
 
+    const handleLogout = async () => {
+        try {
+            await logout();
+        } catch (error) {
+            console.error('Failed to logout', error);
+        }
+    };
+
     return (
         <div className="max-w-3xl space-y-8">
             {/* Header */}
             <div>
                 <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">Settings</h1>
                 <p className="text-slate-600 dark:text-slate-400">Manage your app preferences</p>
+            </div>
+
+            {/* Account Information */}
+            <div className="space-y-4">
+                <h2 className="text-2xl font-semibold text-slate-800 dark:text-white">Account</h2>
+                <Card>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                                <Mail size={24} className="text-indigo-600 dark:text-indigo-400" />
+                            </div>
+                            <div className="flex-1">
+                                <div className="font-semibold text-slate-900 dark:text-white">Email</div>
+                                <div className="text-sm text-slate-500 dark:text-slate-400">
+                                    {user?.email || 'Not available'}
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            onClick={handleLogout}
+                            className="px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center gap-2"
+                        >
+                            <LogOut size={18} />
+                            Logout
+                        </button>
+                    </div>
+                </Card>
             </div>
 
             {/* Appearance */}
@@ -89,6 +127,21 @@ export const Settings = () => {
                         >
                             Clear Data
                         </button>
+                    </div>
+                </Card>
+            </div>
+
+            {/* App Information */}
+            <div className="space-y-4">
+                <h2 className="text-2xl font-semibold text-slate-800 dark:text-white">App Information</h2>
+                <Card>
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <div className="font-semibold text-slate-900 dark:text-white">Version</div>
+                            <div className="text-sm text-slate-500 dark:text-slate-400">
+                                {packageJson.version}
+                            </div>
+                        </div>
                     </div>
                 </Card>
             </div>
